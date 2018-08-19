@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="gogol">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>TheGogol</title>
+    <meta name="description" content="TODO">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta property="og:title" content="TheGogol" />
+    <meta property="og:site_name" content="TheGogol" />
+    <meta property="og:description" content="TODO" />
+    <meta property="og:image" content="TODO" />
+    <meta property="og:image:url" content="TODO" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content="TODO" />
+    <link rel="manifest" href="/manifest.json">
+    <link href='css/style.css' rel='stylesheet' />
+</head>
+
+
+<body ng-controller="index">
+
+    <div class="wrap">
+            <div class="wrap__tile" ng-repeat="char in charecterQueue track by $index" ng-class="{'wrap__hidden-back':($index < (charecterQueue.length - 2)),'wrap__curr':($last),'wrap__prev':($index == (charecterQueue.length - 2))}">
+            {{char.name}}
+            <br>
+            {{char.age}}
+<div class="wrap__buttons">
+<button ng-click="checkWin('more')">older</button>
+<button ng-click="checkWin('less')">younger</button>
+</div>
+            </div>
+            
+    </div>
+    <!-- jquery -->
+  <!--Vendor: AngularJS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://code.angularjs.org/1.5.8/angular-animate.js"></script>
+
+  <!--App file-->
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>

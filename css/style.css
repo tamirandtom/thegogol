@@ -1,0 +1,63 @@
+body {
+    background: #000;
+}
+
+button {
+    width: 100px;
+}
+
+.wrap {
+    width: 100%;
+    background: yellow;
+}
+
+.wrap__tile {
+    transition: all 2s ease-out;
+    top: 0px;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border:1px solid #000;
+    background: #fff;
+}
+
+.wrap__buttons {
+    opacity: 0;
+    text-align: center;
+    transition: all 0.2s ease-out;
+}
+
+.wrap__curr .wrap__buttons {
+    opacity: 1;
+}
+
+.wrap__tile.ng-enter {
+    left: -50%;
+    width: 50%;
+}
+
+.wrap__curr {
+    left: 0%;
+    width: 70%;
+}
+.wrap__curr--active {
+    left: 0%;
+    width: 100%;
+}
+
+.wrap__prev {
+    left: 70%;
+    width: 30%;
+}
+
+.wrap__hidden-back {
+    left: 100%;
+    width: 0%;
+}
+
+/* Desktop */
+
+@media only screen and (min-width: 700px) {}
