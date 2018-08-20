@@ -24,12 +24,18 @@
 
 
 <body ng-controller="index">
+        <div class="tile-verdict" ng-class="{'tile-verdict--lose':(gameState.currState == 'loseScreen'),'tile-verdict--win':(gameState.currState == 'winScreen'),'tile-verdict--visible':(gameState.currState == 'winScreen' || gameState.currState == 'loseScreen')}">
+                <div class="emoji-contain" ng-class="{'emoji-contain--reflect':($odd)}" ng-repeat="emoji in emojiStack track by $index">
+                    <div class="emoji-animate" >{{emoji}}</div>
+                </div>
 
+        </div>
     <div class="wrap">
-            <div class="wrap__tile" ng-repeat="char in charecterQueue track by $index" ng-class="{'wrap__hidden-back':($index < (charecterQueue.length - 2)),'wrap__curr':($last),'wrap__prev':($index == (charecterQueue.length - 2))}">
-            {{char.name}}
-            <br>
-            {{char.age}}
+     
+            <div class="wrap__tile" ng-repeat="char in charecterQueue track by $index" ng-class="{'wrap__halt':(gameState.currState=='halt' && $last),'wrap__hidden-back':($index < (charecterQueue.length - 2)),'wrap__curr':($last),'wrap__prev':($index == (charecterQueue.length - 2))}">
+       <div class="name-title">{{char.name}}</div>   
+       <div class="age-title">{{char.age}}</div>   
+
 <div class="wrap__buttons">
 <button ng-click="checkWin('more')">older</button>
 <button ng-click="checkWin('less')">younger</button>

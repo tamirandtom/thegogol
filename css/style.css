@@ -1,9 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Secular+One&subset=hebrew');
+
+*:focus {outline:0;}
+
 body {
     background: #000;
 }
 
 button {
     width: 100px;
+    font-family: 'Secular One', sans-serif;
+    background: #fff;
+    color: #000;
+    font-size: 20px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 16px 0 rgba(42,62,82,0.20);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+button:hover {
+    box-shadow: 0 2px 20px 0 rgba(42,62,82,0.10);
+    background: #FFF0C0;
+    
 }
 
 .wrap {
@@ -12,7 +31,7 @@ button {
 }
 
 .wrap__tile {
-    transition: all 2s ease-out;
+    transition: all 1s ease-out;
     top: 0px;
     height: 100%;
     position: fixed;
@@ -58,6 +77,132 @@ button {
     width: 0%;
 }
 
-/* Desktop */
+.wrap__halt {
+    width:100%;
+    left:0px;
+    background: red;
+}
 
-@media only screen and (min-width: 700px) {}
+
+/* tile titles */
+
+/* curr tile */
+.wrap__curr .name-title {
+    font-family: 'Secular One', sans-serif;
+    font-size: 40px;
+    line-height: 48px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(42,62,82,0.20);
+}
+
+.wrap__curr .age-title {
+    font-family: 'Secular One', sans-serif;
+    font-size: 0px;
+    line-height: 0px;
+    color: #fff;
+}
+
+
+/* prev tile */
+.wrap__prev .name-title {
+    font-family: 'Secular One', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(42,62,82,0.20);
+}
+
+.wrap__prev .age-title {
+    font-family: 'Secular One', sans-serif;
+    font-size: 48px;
+    line-height: 48px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(42,62,82,0.20);
+}
+
+
+/* hiden tile */
+.wrap__hidden-back .name-title {
+    font-family: 'Secular One', sans-serif;
+    font-size: 0px;
+    line-height: 0px;
+    color: #fff;
+    text-shadow: none;
+}
+
+.wrap__hidden-back .age-title {
+    font-family: 'Secular One', sans-serif;
+    font-size: 0px;
+    line-height: 0px;
+    color: #fff;
+    text-shadow: none;
+}
+
+
+
+/* winning state  */
+.tile-verdict {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 5;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+.tile-verdict--win {
+    background: lime;
+    
+}
+
+.tile-verdict--lose {
+    background: red;
+    
+}
+.tile-verdict.tile-verdict--visible { 
+    opacity: 0.7;
+}
+
+.emoji-contain {
+    position: relative;
+}
+
+.emoji-contain--reflect {
+    transform: scaleX(-1);
+}
+.emoji-animate {
+    position: absolute;
+    animation: jump-right 1s infinite;
+    font-size: 52px;
+}
+
+@keyframes jump-right {
+    0% {
+      left:0%;
+      top:0px;
+      opacity: 1;  
+      animation-timing-function: ease-out; 
+    }
+    20% {
+        left:50px;
+        top:-50px;  
+      animation-timing-function: ease-in; 
+
+    }
+    100% {
+        left:250px;
+        top:400px;
+        opacity: 0;  
+      animation-timing-function: ease-out; 
+
+    }
+  }
+/* Desktop */
+@media only screen and (min-width: 700px) {
+
+}
