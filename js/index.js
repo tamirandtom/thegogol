@@ -4,6 +4,17 @@ var winReactions = ['😀','😍','👻','😺','👍','👏','✌️','🤟','�
 var loseReactions = ['🐓','🐣','😾','👎','🍎']
 var App = angular.module('gogol', ['ngAnimate']);
 App.controller('index', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
+   
+   
+
+    // get game data
+
+    $http.post('https://flutterflutter.herokuapp.com/api/nextchallenge').then(function(b) {
+console.log(b);
+    });
+
+   
+   
     var queueTimeOut = 1500;
     $scope.data = [{
         name: 'tamir',
@@ -84,10 +95,10 @@ if (v=='win')
     }, queueTimeOut );
 
     // emoji waterfall
-    for(var i=0;i<30;i++) {
+    for(var i=0;i<20;i++) {
         $timeout (function(){
             $scope.emojiStack.push(winReactions[Math.floor(Math.random() * winReactions.length)]);
-        }, 200*i);
+        }, 50*i);
     }
     
 
@@ -95,10 +106,10 @@ if (v=='win')
 }    else {
 
     $scope.gameState.currState = 'loseScreen';
-    for(var i=0;i<30;i++) {
+    for(var i=0;i<20;i++) {
         $timeout (function(){
             $scope.emojiStack.push(loseReactions[Math.floor(Math.random() * loseReactions.length)]);
-        }, 200*i);
+        }, 50*i);
     }
 
     // end the game
@@ -121,10 +132,27 @@ $scope.checkWin = function(more) {
 
 
 $scope.endGame = function() { 
-//TODO
-$scope.gameState.currState = 'end';
+    //TODO
+    $scope.gameState.currState = 'end';
+    
+    }
 
-}
+
+
+    // generate random positions 
+    $scope.randomPos = [];
+    for (j=0;j<100;j++)
+    {
+        $scope.randomPos[j]= Math.floor((Math.random() * 200) - 100);
+
+    }
+
+        
+
+// $scope.getRandom = function(){
+//     return Math.floor((Math.random()*500)+1);
+//   }
+
 
 $scope.initGame();
 

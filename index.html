@@ -25,7 +25,7 @@
 
 <body ng-controller="index">
         <div class="tile-verdict" ng-class="{'tile-verdict--lose':(gameState.currState == 'loseScreen'),'tile-verdict--win':(gameState.currState == 'winScreen'),'tile-verdict--visible':(gameState.currState == 'winScreen' || gameState.currState == 'loseScreen')}">
-                <div class="emoji-contain" ng-class="{'emoji-contain--reflect':($odd)}" ng-repeat="emoji in emojiStack track by $index">
+                <div class="emoji-contain" style="top:{{randomPos[$index]}}px" ng-class="{'emoji-contain--reflect':($odd)}" ng-repeat="emoji in emojiStack track by $index">
                     <div class="emoji-animate" >{{emoji}}</div>
                 </div>
 
