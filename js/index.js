@@ -5,70 +5,42 @@ var loseReactions = ['🐓','🐣','😾','👎','🍎']
 var App = angular.module('gogol', ['ngAnimate']);
 App.controller('index', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
    
-   
+    $scope.data = [];
 
+    var currentTime = new Date();
+var currYear = currentTime.getFullYear();
     // get game data
+    $http.post("https://flutterflutter.herokuapp.com/api/nextchallenge")
+    .then(function(response) {
+        console.log(response.data);
+        for (var i = 0; i < response.data.length; i++) {
+            $scope.data.push({
+                name: response.data[i].name,
+                age: currYear - response.data[i].year,
+                img: response.data[i].image,
+                isMale: response.data[i].is_male
+            });
+        }
+$scope.initGame();
 
-    $http.post('https://flutterflutter.herokuapp.com/api/nextchallenge').then(function(b) {
-console.log(b);
     });
-
    
    
     var queueTimeOut = 1500;
-    $scope.data = [{
-        name: 'tamir',
-        age: '30',
-        img: 'http://foo.jpg'
-    }, {
-        name: 'faa',
-        age: '10',
-        img: 'http://foo.jpg'
-    }, {
-        name: 'fii',
-        age: '20',
-        img: 'http://foo.jpg'
-    }
-    , {
-        name: 'fii',
-        age: '40',
-        img: 'http://foo.jpg'
-    }
-    , {
-        name: 'fii',
-        age: '50',
-        img: 'http://foo.jpg'
-    }
-    , {
-        name: 'fii',
-        age: '10',
-        img: 'http://foo.jpg'
-    }
-    , {
-        name: 'fii',
-        age: '45',
-        img: 'http://foo.jpg'
-    }
-    , {
-        name: 'fii',
-        age: '20',
-        img: 'http://foo.jpg'
-    }];
 
     $scope.gameState = {
         currState:'wait'
     };
 
     
-$scope.charecterQueue = [];
 
+
+$scope.initGame = function() {
+    $scope.charecterQueue = [];
 $scope.emojiStack = [];
-
 $scope.currQuestion = $scope.data[0];
 $scope.currQuestionPos = 0;
 $scope.isCounting=false;
-
-$scope.initGame = function() {
     $scope.charecterQueue.push($scope.data[0]);  
     $scope.charecterQueue.push($scope.data[1]); 
 $scope.currQuestionPos = 1;
@@ -154,6 +126,5 @@ $scope.endGame = function() {
 //   }
 
 
-$scope.initGame();
 
 }]);

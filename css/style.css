@@ -6,8 +6,9 @@ body {
     background: #000;
 }
 
+
 button {
-    width: 100px;
+    width: 150px;
     font-family: 'Secular One', sans-serif;
     background: #fff;
     color: #000;
@@ -18,6 +19,7 @@ button {
     box-shadow: 0 2px 16px 0 rgba(42,62,82,0.20);
     transition: all 0.3s ease-out;
     cursor: pointer;
+    margin-top: 32px;
 }
 button:hover {
     box-shadow: 0 2px 20px 0 rgba(42,62,82,0.10);
@@ -27,6 +29,7 @@ button:hover {
 
 .wrap {
     width: 100%;
+    max-width: 600px;
     background: yellow;
 }
 
@@ -40,17 +43,37 @@ button:hover {
     align-items: center;
     flex-direction: column;
     border:1px solid #000;
-    background: #fff;
+    background-size: cover;
+    background-position: center center;
 }
-
+.wrap__tile__z2 {
+   z-index: 2;
+}
+.wrap__tile__overlay {
+    width: 100%;
+    height:100%;
+    background-color: #2A3E52;
+    position: absolute;
+}
+.wrap__curr  .wrap__tile__overlay {
+    opacity: 0.2;
+}
+.wrap__prev  .wrap__tile__overlay {
+    opacity: 0.7;
+}
 .wrap__buttons {
     opacity: 0;
     text-align: center;
     transition: all 0.2s ease-out;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
 }
 
 .wrap__curr .wrap__buttons {
     opacity: 1;
+    pointer-events: all;
+
 }
 
 .wrap__tile.ng-enter {
@@ -61,6 +84,7 @@ button:hover {
 .wrap__curr {
     left: 0%;
     width: 70%;
+box-shadow: 0 2px 16px 0 rgba(42,62,82,0.40);
 }
 .wrap__curr--active {
     left: 0%;
@@ -70,6 +94,7 @@ button:hover {
 .wrap__prev {
     left: 70%;
     width: 30%;
+box-shadow: 0 0px 0px 0 rgba(42,62,82,0.0);
 }
 
 .wrap__hidden-back {
@@ -90,9 +115,11 @@ button:hover {
 .wrap__curr .name-title {
     font-family: 'Secular One', sans-serif;
     font-size: 40px;
-    line-height: 48px;
+    line-height: 40px;
     color: #fff;
     text-shadow: 0 2px 5px rgba(42,62,82,0.20);
+    margin-top: 40%;
+    text-align: center;
 }
 
 .wrap__curr .age-title {

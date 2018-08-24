@@ -24,32 +24,36 @@
 
 
 <body ng-controller="index">
-        <div class="tile-verdict" ng-class="{'tile-verdict--lose':(gameState.currState == 'loseScreen'),'tile-verdict--win':(gameState.currState == 'winScreen'),'tile-verdict--visible':(gameState.currState == 'winScreen' || gameState.currState == 'loseScreen')}">
-                <div class="emoji-contain" style="top:{{randomPos[$index]}}px" ng-class="{'emoji-contain--reflect':($odd)}" ng-repeat="emoji in emojiStack track by $index">
-                    <div class="emoji-animate" >{{emoji}}</div>
-                </div>
 
+    <div class="tile-opne-screen"></div>
+    <div class="tile-high-score"></div>
+    <div class="tile-verdict" ng-class="{'tile-verdict--lose':(gameState.currState == 'loseScreen'),'tile-verdict--win':(gameState.currState == 'winScreen'),'tile-verdict--visible':(gameState.currState == 'winScreen' || gameState.currState == 'loseScreen')}">
+        <div class="emoji-contain" style="top:{{randomPos[$index]}}px" ng-class="{'emoji-contain--reflect':($odd)}" ng-repeat="emoji in emojiStack track by $index">
+            <div class="emoji-animate">{{emoji}}</div>
         </div>
-    <div class="wrap">
-     
-            <div class="wrap__tile" ng-repeat="char in charecterQueue track by $index" ng-class="{'wrap__halt':(gameState.currState=='halt' && $last),'wrap__hidden-back':($index < (charecterQueue.length - 2)),'wrap__curr':($last),'wrap__prev':($index == (charecterQueue.length - 2))}">
-       <div class="name-title">{{char.name}}</div>   
-       <div class="age-title">{{char.age}}</div>   
 
-<div class="wrap__buttons">
-<button ng-click="checkWin('more')">older</button>
-<button ng-click="checkWin('less')">younger</button>
-</div>
+    </div>
+    <div class="wrap">
+
+        <div class="wrap__tile" ng-repeat="char in charecterQueue track by $index" style="background-image:url({{char.img}})" ng-class="{'wrap__halt':(gameState.currState=='halt' && $last),'wrap__hidden-back':($index < (charecterQueue.length - 2)),'wrap__curr':($last),'wrap__prev':($index == (charecterQueue.length - 2))}">
+           <div class="wrap__tile__overlay"></div>
+            <div class="name-title wrap__tile__z2">{{char.name}}</div>
+            <div class="age-title wrap__tile__z2">{{char.age}}</div>
+
+            <div class="wrap__buttons wrap__tile__z2">
+                <button ng-click="checkWin('more')">{{(char.isMale) ? "זקן יותר" : "זקנה יותר"}}</button>
+                <button ng-click="checkWin('less')">{{(char.isMale) ? "צעיר יותר" : "צעירה יותר"}}</button>
             </div>
-            
+        </div>
+
     </div>
     <!-- jquery -->
-  <!--Vendor: AngularJS-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-  <script src="https://code.angularjs.org/1.5.8/angular-animate.js"></script>
+    <!--Vendor: AngularJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://code.angularjs.org/1.5.8/angular-animate.js"></script>
 
-  <!--App file-->
-  <script src="js/index.js"></script>
+    <!--App file-->
+    <script src="js/index.js"></script>
 
 </body>
 
